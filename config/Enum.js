@@ -6,5 +6,6 @@ module.exports = {
     "CRAWLER_TYPES": {
         "natro": "Natro",
         "turhost": "Turhost"
-    }
+    },
+    "DATE_FORMAT": "YYYY-MM-DD"
 }
