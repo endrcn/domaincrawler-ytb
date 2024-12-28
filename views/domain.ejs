@@ -1,0 +1,85 @@
+<html lang="en">
+
+<%- include('pages/header') %>
+
+    <body>
+        <div class="page">
+
+            <%- include('pages/navbar') %>
+
+                <div class="page-wrapper">
+                    <!-- Page header -->
+                    <div class="page-header d-print-none">
+                        <div class="container-xl">
+                            <div class="row g-2 align-items-center">
+                                <div class="col">
+                                    <h2 class="page-title">
+                                        <%=title%>
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Page body -->
+                    <div class="page-body">
+                        <div class="container-xl">
+                            <div class="row row-cards">
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="table-responsive">
+                                            <table class="table table-vcenter card-table table-bordered table-nowrap"
+                                                id="domain-table">
+                                                <thead>
+                                                    <tr>
+                                                        <td class="w-33">
+                                                            <h2>
+                                                                <%=extension%>
+                                                            </h2>
+                                                            Compare the prices of <b>'<%=extension%>'</b> domain extension from <b>
+                                                                <%=companyCount%>
+                                                            </b> registrars
+
+                                                        </td>
+                                                        <td
+                                                            class="text-center w-auto text-uppercase text-muted font-weight-medium">
+                                                            Registration
+                                                        </td>
+                                                        <td
+                                                            class="text-center w-auto text-uppercase text-muted font-weight-medium">
+                                                            Renewal</td>
+                                                        <td
+                                                            class="text-center w-auto text-uppercase text-muted font-weight-medium">
+                                                            Transfer</td>
+                                                        <td
+                                                            class="text-center w-auto text-uppercase text-muted font-weight-medium">
+                                                        </td>
+                                                    </tr>
+                                                    <%- include('pages/table-legend') %>
+                                                </thead>
+                                                <tbody>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%- include('pages/footer') %>
+                </div>
+        </div>
+        <!-- Libs JS -->
+        <!-- Tabler Core -->
+        <script src="/javascripts/tabler.min.js?1692870487" defer></script>
+
+        <script src="/javascripts/app.js"></script>
+
+        <script>
+            getDomainPrices('<%=extension%>', '<%=lastUpdateDate%>')
+            putLastUpdatedDate('<%=lastUpdateDate%>')
+        </script>
+
+    </body>
+
+</html>

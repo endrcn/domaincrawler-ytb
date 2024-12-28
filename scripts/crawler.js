@@ -1,5 +1,5 @@
 require("dotenv").config({
-    path: __dirname+"/../.env"
+    path: __dirname + "/../.env"
 })
 
 
@@ -11,6 +11,7 @@ const Companies = require("../db/models/Companies");
 const Domains = require("../db/models/Domains");
 const Prices = require("../db/models/Prices");
 const Database = require("../db/Database");
+const moment = require("moment");
 
 
 run();
@@ -84,19 +85,23 @@ async function createDomain(data) {
 }
 
 async function addPrices(data, domain, company) {
+    try {
+        let { domain: domainExt, type, ...price } = data;
 
-    let { domain: domainExt, type, ...price } = data;
+        price = preparePrice(price);
 
-    price = preparePrice(price);
+        await Prices.create({
+            domain: domain._id,
+            company: company._id,
+            ...price,
+            // 2024-12-18T23:30:30.000Z
+            // ['2024-12-18', '23:30:30.000Z']
+            date: moment().format(Enum.DATE_FORMAT)
+        })
+    } catch (err) {
+        console.error(err.message);
+    }
 
-    await Prices.create({
-        domain: domain._id,
-        company: company._id,
-        ...price,
-        // 2024-12-18T23:30:30.000Z
-        // ['2024-12-18', '23:30:30.000Z']
-        date: new Date().toJSON().split("T")[0]
-    })
 }
 
 function preparePrice(price) {

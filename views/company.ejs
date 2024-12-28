@@ -34,18 +34,15 @@
                               <h2>
                                 <b id="domainCount">0</b> Domain Extensions
                               </h2>
-                              Compare the prices of every domain extension from <b>
-                                <%=companyCount%>
-                              </b> registrars
+
+                              provided by <b>'<%=company%>'</b> registrar.
 
                             </td>
                             <td class="text-center w-auto text-uppercase text-muted font-weight-medium">Registration
                             </td>
                             <td class="text-center w-auto text-uppercase text-muted font-weight-medium">Renewal</td>
                             <td class="text-center w-auto text-uppercase text-muted font-weight-medium">Transfer</td>
-                            <td class="text-center w-auto text-uppercase text-muted font-weight-medium">
-                              <input type="text" class="form-control" placeholder="Search Extensions..." id="search">
-                            </td>
+                            <td class="text-center w-auto text-uppercase text-muted font-weight-medium"></td>
                           </tr>
                           <%- include('pages/table-legend') %>
                         </thead>
@@ -69,7 +66,7 @@
     <script src="/javascripts/app.js"></script>
 
     <script>
-      getAllDomains('<%=lastUpdateDate%>')
+      getCompanyDomains('<%=company%>', '<%=lastUpdateDate%>')
       putLastUpdatedDate('<%=lastUpdateDate%>')
     </script>
 
